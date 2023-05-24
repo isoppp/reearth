@@ -1,36 +1,41 @@
 import { action } from "@storybook/addon-actions";
-import { Meta } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
+import { BrowserRouter } from "react-router-dom";
+
+import Component from "@reearth/classic/core/engines/Cesium";
 
 import Header, { Props } from ".";
-
-const defaultProps: Props = {
-  user: {
-    name: "Shinnosuke Komiya",
-  },
-  currentWorkspace: {
-    id: "1",
-    name: "Darwin Education",
-  },
-  workspaces: [
-    {
-      id: "A",
-      name: "Team A",
-    },
-    {
-      id: "B",
-      name: "Team B",
-    },
-  ],
-  onSignOut: () => action("signOut"),
-};
 
 export default {
   title: "molecules/Common/Header",
   component: Header,
-} as Meta;
+  args: {
+    user: {
+      name: "Shinnosuke Komiya",
+    },
+    currentWorkspace: {
+      id: "1",
+      name: "Darwin Education",
+    },
+    workspaces: [
+      {
+        id: "A",
+        name: "Team A",
+      },
+      {
+        id: "B",
+        name: "Team B",
+      },
+    ],
+    onSignOut: () => action("signOut"),
+  },
+} as Meta<Props>;
 
-export const Default = () => <Header {...defaultProps} />;
-export const WithNoTeams = () => <Header {...{ ...defaultProps, teams: [] }} />;
-export const NoLogin = () => (
-  <Header {...{ ...defaultProps, onSignOut: undefined, user: undefined }} />
-);
+const Template: Story<Props> = args => <BrowserRouter><Component {...args} /></BrowserRouter>;
+
+export const Default = Template.bind({});
+
+export const NoLogin = Template.bind({
+  onSignOut: undefined,
+  user: undefined,
+});

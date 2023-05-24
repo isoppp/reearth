@@ -1,7 +1,9 @@
 import { action } from "@storybook/addon-actions";
-import { Meta } from "@storybook/react";
+import {Meta, Story} from "@storybook/react";
+import { BrowserRouter } from "react-router-dom";
 
 import Header from ".";
+import Component, {Props} from "@reearth/classic/core/Visualizer";
 
 const defaultProps = {
   currentProject: {
@@ -58,4 +60,10 @@ export default {
   component: Header,
 } as Meta;
 
-export const Default = () => <Header {...defaultProps} />;
+const Template: Story<Props> = args => (
+  <BrowserRouter>
+    <Component {...args} />
+  </BrowserRouter>
+);
+
+export const Default = () => Template.bind({});

@@ -13,5 +13,8 @@ const Template: Story<Props> = args => <Component {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  widget: {
+    id: "",
+  },
   context: { ...contextEvents },
 };

@@ -8,7 +8,10 @@ export default {
   title: "molecules/Visualizer/Widget/Navigator",
   component: Component,
   parameters: { actions: { argTypesRegex: "^on.*" } },
-} as Meta;
+  args: {
+    sceneProperty: {},
+  },
+} as Meta<Props>;
 
 const Template: Story<Props> = args => (
   <Provider>

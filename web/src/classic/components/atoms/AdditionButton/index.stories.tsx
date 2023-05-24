@@ -1,11 +1,10 @@
 import { Story, Meta } from "@storybook/react";
-import { Component } from "react";
 
-import AdditionButton, { Props } from ".";
+import Component, { Props } from ".";
 
 export default {
   title: "atoms/Buttons/AdditionButton",
-  component: AdditionButton,
+  component: Component,
 } as Meta;
 
 export const Default: Story<Props> = args => <Component {...args} />;
